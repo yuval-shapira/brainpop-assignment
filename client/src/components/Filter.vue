@@ -2,12 +2,22 @@
   <div class="filter-by-timeline">
     <h3>Filter by</h3>
     <div class="flex-container">
-      <button class="btn-filter-activity" @click="filterByActivity(activity)">
+      <button
+        class="btn-filter-activity"
+        :class="selectedFilter === 'all' ? 'selected-filter' : ''"
+        @click="filterByActivity('all')"
+      >
         All Work
-        </button>      
-      <button class="btn-filter-activity" v-for="activity in activitiesType" :key="activity.id" @click="filterByActivity(activity)">
+      </button>
+      <button
+        class="btn-filter-activity"
+        :class="selectedFilter === activity.resource_type ? 'selected-filter' : ''"
+        v-for="activity in activitiesType"
+        :key="activity.id"
+        @click="filterByActivity(activity.resource_type)"
+      >
         {{ activity.type }}
-        </button>
+      </button>
     </div>
   </div>
 </template>
@@ -18,15 +28,20 @@ export default {
   props: {
     activitiesType: Array
   },
-
-  methods: {
-    filterByActivity(activity) {
-      console.log(activity);
-    }
+  data() {
+    return {
+      selectedFilter: "all"
+    };
   },
+  methods: {
+    filterByActivity(filterBy) {
+      this.selectedFilter = filterBy;
+      this.$emit("filterAct", filterBy);
+    }
+  }
 };
 </script>
-<style >
+<style>
 .btn-filter-activity {
   border: 2px solid rgb(4, 149, 160);
   border-radius: 5px;
@@ -39,6 +54,9 @@ export default {
   font-size: 12px;
   margin: 2px 1px;
   cursor: pointer;
+}
+.selected-filter {
+  background-color: rgba(59, 242, 255, 0.201);
 }
 .flex-container {
   display: flex;
