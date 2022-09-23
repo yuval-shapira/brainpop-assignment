@@ -36,17 +36,17 @@ export default {
   methods: {
     filterByActivity(filterBy) {
       this.selectedFilter = filterBy;
-      this.$emit("filterAct", filterBy);
+      this.$emit("filterByType", filterBy);
     }
   }
 };
 </script>
 <style>
 .btn-filter-activity {
-  border: 2px solid rgb(4, 149, 160);
+  border: 2px solid #008E9B;
   border-radius: 5px;
   background-color: white;
-  color: rgb(4, 149, 160);
+  color: #008E9B;
   font-weight: bold;
   padding: 5px 10px;
   text-decoration: none;
@@ -56,7 +56,7 @@ export default {
   cursor: pointer;
 }
 .selected-filter {
-  background-color: rgba(59, 242, 255, 0.201);
+  background-color: #008e9b16;
 }
 .flex-container {
   display: flex;
