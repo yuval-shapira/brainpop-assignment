@@ -203,7 +203,12 @@ code.language-yaml {
 .language-bash .token.keyword {
   color: #0086b3;
 }
-
+.assum{
+  background-color: #8aff7d;
+}
+.not-completed{
+  background-color: #fffc7d;
+}
 /* highlight */
 pre[data-line] {
   position: relative;
@@ -307,32 +312,34 @@ You can find the <a href="#requirements-guides">Requirements</a>, <a href="#scre
 Note: The time this assignment will take to complete will differ based on experience.</p>
 <h1 class="mume-header" id="basic-requirements">Basic requirements:</h1>
 
-<ul>
+<ol>
 <li>This app contains one main view - the <a href="#activities-view">Activities view</a>.</li>
 <li>The main activities feed you should be using is the <a href="#apis">Activities V1 API</a>.</li>
 <li>When the user clicks on the &apos;View work&apos; link on an activity, it should open a modal as seen on the <a href="#zoom">Zoom</a> screenshot. This modal shows the activity info plus the teacher comment on that activity.</li>
-<li>The app should support direct access to the zoom view via your router.</li>
+<li>The app should support direct access to the zoom view via your router.<p class="assum">Assumption: direct access to non view activity will lead to relevant message</p></li>
 <li>The activities timeline should be grouped and ordered by months as seen in the <a href="#activities-view">Activities view</a> screenshot.</li>
 <li>Each activity has its own set of attributes that determine the way it is rendered. Available activities and their attributes are listed in the <a href="#activity-types-and-settings">Activity Types and Settings</a> section.</li>
 <li>The app should support two types of filters:
 <ul>
 <li>Free text filter</li>
 <li>Activity type filter<br>
-No additional API calls are required for that, you already have all the data you need.</li>
+No additional API calls are required for that, you already have all the data you need.<br>
+<p class="assum">Search by combining the two types of search is avaliable.
+  in order to "clear" the search results, click again in the search bar or, click on the search button</p></li>
 </ul>
 </li>
 <li>There are two products variants. &apos;bp&apos; and &apos;bpjr&apos;. The product affects the topic icon rendering as seen in the <a href="#activities-view">Activities view</a> screenshot.</li>
 <li>Design matters! Keep close to the design as it is shown in the screenshots.</li>
-</ul>
+</o>
 <h1 class="mume-header" id="advanced">Advanced</h1>
 
-<ul>
+<ol>
 <li>The app support another data feed, <a href="#apis">Activities V2 API</a>, that is structured differently. Same data, but a different structure. Make sure your code supports both structures from <a href="#apis">API #V1</a> and <a href="#apis">API #V2</a>. Create a new route that demonstrates this support.</li>
 <li>The app should display 10 activities at a time and support pagination for loading additional ones in the form of a &apos;Load more&apos; button.</li>
-<li>Add support for hiding activities. Every activity row should have a hide icon that hides it when clicked. This hidden state should be persistent.</li>
+<li class="not-completed">Add support for hiding activities. Every activity row should have a hide icon that hides it when clicked. This hidden state should be persistent.</li>
 <li>Add autosuggest support to the text filter input.<br>
 Use the topics names from your main <a href="#apis">API V1</a> feed to generate the autosuggest items list.</li>
-</ul>
+</ol>
 <h1 class="mume-header" id="apis">APIs</h1>
 
 <ul>
@@ -343,13 +350,13 @@ Use the topics names from your main <a href="#apis">API V1</a> feed to generate 
 
 <h3 class="mume-header" id="activities-view">Activities view</h3>
 
-<p><img src="assets/timeline.jpg" alt="Timeline"></p>
+<p><img src="timeline.jpg" alt="Timeline"></p>
 <h3 class="mume-header" id="zoom">Zoom</h3>
 
-<p><img src="assets/zoom.jpg" alt="Zoom"></p>
+<p><img src="zoom.jpg" alt="Zoom"></p>
 <h3 class="mume-header" id="auto-complete">Auto-complete</h3>
 
-<p><img src="assets/autocomplete.jpg" alt="Zoom"></p>
+<p><img src="autocomplete.jpg" alt="Zoom"></p>
 <h1 class="mume-header" id="activity-types-and-settings">Activity Types and Settings</h1>
 
 <p>Every activity has two settings. They can be scored and they can be viewed in zoom mode (View work button). Those settings are not a part of the API response but rather resides on the client app.</p>
@@ -390,7 +397,7 @@ Use the topics names from your main <a href="#apis">API V1</a> feed to generate 
 <li>Zoom = true</li>
 </ul>
 </li>
-<li><strong>Wordplay</strong>
+<li><strong>Word play</strong>
 <ul>
 <li>Score = false</li>
 <li>Zoom = true</li>
